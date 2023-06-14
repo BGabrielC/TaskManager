@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaskManagerLib\TaskManagerLib.csproj">
+      <Project>{b30e53d1-4a25-4d59-8df7-493e73dcdb27}</Project>
+      <Name>TaskManagerLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
