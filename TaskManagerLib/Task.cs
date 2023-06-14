@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,8 +47,10 @@ namespace TaskManagerLib
        
         public static List<Task> ReadFromFile(string fileName)
         {
+            string directory = @"../../Tasks";
+            string path = Path.Combine(directory, fileName);
             List<Task> tasks = new List<Task>();
-            string[] lines = System.IO.File.ReadAllLines(fileName);
+            string[] lines = System.IO.File.ReadAllLines(path);
             foreach (string line in lines)
             {
                 tasks.Add(ParseFromFile(line));

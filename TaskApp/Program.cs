@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,15 @@ namespace TaskManager
     {
         static void Main(string[] args)
         {
-            //List<Task> tasks = Task.ReadFromFile("tasks.txt");
+
+            string filename = "tasks.txt";
+            string directory = @"../../Tasks/";
+            string path = Path.Combine(directory, filename);
+            if (!File.Exists(path))
+            {
+                File.Create(path).Close();
+            }
+            List<Task> tasks = Task.ReadFromFile("tasks.txt");
             bool exit = false;
             while (!exit)
             {
@@ -24,7 +33,7 @@ namespace TaskManager
                 switch (option)
                 {
                     case "1":
-                        //ViewAllTasks(tasks);
+                        ViewAllTasks(tasks);
                         break;
                     case "2":
                         //AddTask(tasks);
@@ -35,6 +44,14 @@ namespace TaskManager
                     default:
                         Console.WriteLine("Invalid option");
                         break;
+                }
+            }
+
+            void ViewAllTasks(List<Task> taskList)
+            {
+                foreach (Task task in taskList)
+                {
+                    Console.WriteLine(task);
                 }
             }
 
